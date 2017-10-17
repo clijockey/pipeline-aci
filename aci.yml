@@ -1,0 +1,27 @@
+jobs:
+- name: Create-Tenant
+  plan:
+  - get: pipeline-git
+  trigger: true
+  - get: acktoolkit-img
+  - task: create-tenant
+    image: acktoolkit
+    config:
+      platform: linux
+      inputs:
+      - name: pipeline-git
+      run:
+        path: pipeline-git/tasks/hello.sh
+
+resources:
+- name: acktoolkit-img
+  type: docker-image
+  source:
+    repository: dockercisco/acitoolkit
+
+- name: pipeline-git
+  type: git
+  source:
+    uri: git@github.com:clijockey/pipeline-aci.git
+    branch: master
+    private_key: {{github_ssh_key}}
