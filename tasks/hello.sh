@@ -22,4 +22,4 @@ echo "Hello"
 
 
 
- APIC_LOGIN=${APIC_LOGIN} APIC_PASSWORD=${APIC_PASSWORD} APIC_URL=${APIC_URL} aci-show-contracts.py
+ APIC_LOGIN=${APIC_LOGIN} APIC_PASSWORD=${APIC_PASSWORD} APIC_URL=${APIC_URL} pipeline-git/tasks/aci-show-contracts.py
