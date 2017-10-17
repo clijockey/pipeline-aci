@@ -1,0 +1,12 @@
+---
+apic_login: 
+apic_password: 
+apic_url: 
+github_ssh_key: |
+  -----BEGIN RSA PRIVATE KEY-----
+  a5C6/FuHJqk46NCUpSs7a7elCY1spE8I+JLkb2buqLSrpJlp3dhUh38Lijf7BRTD
+  O9bI/ZSE3rOcfZt+iSQWme8XtROrB/BdKtYeu0oNJvaaWgrLh+KJfHg3SEriGycs
+  zzq8Rlt2J4Ut1w7MzUagGGnqOkh+/pt1oSol5rykF3nUKieHLNPuT21jbrw/2qYs
+  2hP9MZemFWSyW6uJjIUVbsIZ3TNxhy3DKfMbK7A6UhRxclAYVeDKuz6wKmxeICWB
+  yn2E8JxPbI4n0lJ0yRtAJf/OisyjcpQFklhZUaHxSP1Q7GmgrBgyWXw=
+  -----END RSA PRIVATE KEY-----
