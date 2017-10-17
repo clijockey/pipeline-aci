@@ -16,10 +16,17 @@ fail () {
 
 set -u
 
-info "About to do something ....."
-echo "Hello" 
+info "List all the tenants on ACI"
 
+APIC_LOGIN=${APIC_LOGIN} \
+APIC_PASSWORD=${APIC_PASSWORD} \
+APIC_URL=${APIC_URL} \
+pipeline-git/tasks/aci-show-tenants.py
 
+info "Create Tenant"
+APIC_LOGIN=${APIC_LOGIN} \
+APIC_PASSWORD=${APIC_PASSWORD} \
+APIC_URL=${APIC_URL} \
+pipeline-git/tasks/aci-craete-tenant.py robTest
 
-
- APIC_LOGIN=${APIC_LOGIN} APIC_PASSWORD=${APIC_PASSWORD} APIC_URL=${APIC_URL} pipeline-git/tasks/aci-show-tenants.py
+ info "Create Bridge Domain"
