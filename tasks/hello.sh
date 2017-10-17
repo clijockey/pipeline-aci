@@ -21,12 +21,12 @@ info "List all the tenants on ACI"
 APIC_LOGIN=${APIC_LOGIN} \
 APIC_PASSWORD=${APIC_PASSWORD} \
 APIC_URL=${APIC_URL} \
-pipeline-git/tasks/aci-show-tenants.py
+git-pipeline-aci/tasks/aci-show-tenants.py
 
 info "Create Tenant"
 APIC_LOGIN=${APIC_LOGIN} \
 APIC_PASSWORD=${APIC_PASSWORD} \
 APIC_URL=${APIC_URL} \
-pipeline-git/tasks/aci-create-tenant.py -t robTest
+git-pipeline-aci/tasks/aci-create-tenant.py -t robTest
 
  info "Create Bridge Domain"
