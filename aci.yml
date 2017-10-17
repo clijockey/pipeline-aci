@@ -2,6 +2,7 @@ jobs:
 - name: Create-Tenant
   plan:
   - get: pipeline-git
+    trigger: true
   - get: acltoolkit-img
   - task: create-tenant
     image: acltoolkit-img
