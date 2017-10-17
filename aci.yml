@@ -2,19 +2,22 @@ jobs:
 - name: Create-Tenant
   plan:
   - get: pipeline-git
-  trigger: true
-  - get: acktoolkit-img
+  - get: acltoolkit-img
   - task: create-tenant
-    image: acktoolkit
+    image: acltoolkit-img
     config:
       platform: linux
       inputs:
       - name: pipeline-git
       run:
         path: pipeline-git/tasks/hello.sh
+    params:
+      APIC_LOGIN: {{apic_login}}
+      APIC_PASSWORD: {{apic_password}}
+      APIC_URL: {{apic_url}}
 
 resources:
-- name: acktoolkit-img
+- name: acltoolkit-img
   type: docker-image
   source:
     repository: dockercisco/acitoolkit
