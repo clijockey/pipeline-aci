@@ -1,5 +1,5 @@
 jobs:
-- name: Create-Tenant
+- name: Configure-ACI
   plan:
   - get: git-pipeline-aci
     trigger: true
@@ -11,25 +11,42 @@ jobs:
       inputs:
       - name: git-pipeline-aci
       run:
-        path: git-pipeline-aci/tasks/hello.sh
-    params:
-      APIC_LOGIN: {{apic_login}}
-      APIC_PASSWORD: {{apic_password}}
-      APIC_URL: {{apic_url}}
+        path: sh
+        args:
+        - -exc
+        - |
+          echo "Create Tenant"
 
-- name: Create-Something
-  plan:
-  - get: git-pipeline-aci
-    trigger: true
-  - get: acltoolkit-img
-  - task: create-tenant
+          APIC_LOGIN={{apic_login}} \
+          APIC_PASSWORD={{apic_password}} \
+          APIC_URL={{apic_url}} \
+          git-pipeline-aci/tasks/aci-create-tenant.py -t test
+  - task: create-bd
     image: acltoolkit-img
     config:
       platform: linux
       inputs:
       - name: git-pipeline-aci
       run:
-        path: git-pipeline-aci/tasks/aci-create-tenant.py -u {{apic_url}} -l {{apic_login}} -p {{apic_password}} -t "something"
+        path: sh
+        args:
+        - -exc
+        - |
+          echo "Create Bridge Domain"
+
+          APIC_LOGIN={{apic_login}} \
+          APIC_PASSWORD={{apic_password}} \
+          APIC_URL={{apic_url}} \
+          git-pipeline-aci/tasks/aci-create-bd.py
+
+          # --tenant TENANT       The name of Tenant
+          # --vrf VRF             The name of VRF
+          # --bd BD               The name of BridgeDomain
+          # --address ADDRESS     Subnet IPv4 Address
+          # --scope SCOPE         The scope of subnet ("public", "private", "shared",
+          #                       "public,shared", "private,shared", "shared,public",
+          #                       "shared,private")
+          # --json [JSON]         Json output only
 
 resources:
 - name: acltoolkit-img
