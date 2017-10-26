@@ -34,10 +34,10 @@ jobs:
         - |
           echo "Create Bridge Domain"
 
-          APIC_LOGIN={{apic_login}} \
-          APIC_PASSWORD={{apic_password}} \
-          APIC_URL={{apic_url}} \
-          git-pipeline-aci/tasks/aci-create-bd.py
+          # APIC_LOGIN={{apic_login}} \
+          # APIC_PASSWORD={{apic_password}} \
+          # APIC_URL={{apic_url}} \
+          # git-pipeline-aci/tasks/aci-create-bd.py
 
           # --tenant TENANT       The name of Tenant
           # --vrf VRF             The name of VRF
